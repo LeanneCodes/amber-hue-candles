@@ -1,36 +1,41 @@
-'use client';
-import React, { useState } from 'react';
-import Image from 'next/image';
+"use client";
 
-const ProductGallery = ({ images, name }) => {
-  const [selectedImage, setSelectedImage] = useState(images[0]);
+import { useState } from "react";
+
+export default function ProductGallery({ images }) {
+  const [mainImage, setMainImage] = useState(images[0]);
 
   return (
-    <div>
-      <Image
-        src={selectedImage}
-        alt={name}
-        width={500}
-        height={500}
-        className="rounded-lg object-cover"
-      />
-      <div className="flex gap-2 mt-4">
+    <div className="flex flex-col items-center">
+      {/* Main Image */}
+      <div className="w-full border rounded-lg overflow-hidden">
+        <img
+          src={mainImage}
+          alt="Main product image"
+          className="w-full h-[400px] object-cover object-center transition-all duration-300"
+        />
+      </div>
+
+      {/* Thumbnail Images */}
+      <div className="flex space-x-3 mt-4">
         {images.map((img, idx) => (
-          <Image
+          <button
             key={idx}
-            src={img}
-            alt={`${name} ${idx}`}
-            width={100}
-            height={100}
-            className={`rounded cursor-pointer border ${
-              selectedImage === img ? 'border-black' : 'border-transparent'
+            onClick={() => setMainImage(img)}
+            className={`border rounded-md overflow-hidden transition-all duration-200 ${
+              mainImage === img
+                ? "ring-2 ring-black"
+                : "opacity-70 hover:opacity-100"
             }`}
-            onClick={() => setSelectedImage(img)}
-          />
+          >
+            <img
+              src={img}
+              alt={`Thumbnail ${idx + 1}`}
+              className="w-20 h-20 object-cover"
+            />
+          </button>
         ))}
       </div>
     </div>
   );
-};
-
-export default ProductGallery;
+}

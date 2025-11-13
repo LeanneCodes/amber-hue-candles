@@ -1,50 +1,38 @@
-'use client';
-import React, { useState } from 'react';
+"use client";
 
-const ProductTabs = ({ product }) => {
-  const [activeTab, setActiveTab] = useState('description');
+import { useState } from "react";
+import ProductReviews from "./ProductReviews";
+
+export default function ProductTabs({ product }) {
+  const tabs = ["Description", "Shipping & Policies", "Product Care", "Reviews"];
+  const [active, setActive] = useState("Description");
 
   return (
-    <div className="mt-10">
-      <div className="flex gap-6 border-b pb-2">
-        {['description', 'shipping', 'care', 'reviews'].map((tab) => (
+    <div className="mt-8">
+      {/* Tabs */}
+      <div className="flex border-b mb-4">
+        {tabs.map((tab) => (
           <button
             key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`uppercase text-sm font-medium ${
-              activeTab === tab
-                ? 'border-b-2 border-black pb-1'
-                : 'text-gray-500'
+            onClick={() => setActive(tab)}
+            className={`px-4 py-2 text-sm font-medium ${
+              active === tab
+                ? "border-b-2 border-black text-black"
+                : "text-gray-500 hover:text-black"
             }`}
           >
-            {tab === 'description'
-              ? 'Description'
-              : tab === 'shipping'
-              ? 'Shipping & Policies'
-              : tab === 'care'
-              ? 'Product Care'
-              : 'Reviews'}
+            {tab}
           </button>
         ))}
       </div>
 
-      <div className="mt-5">
-        {activeTab === 'description' && <p>{product.description}</p>}
-        {activeTab === 'shipping' && <p>{product.shipping}</p>}
-        {activeTab === 'care' && <p>{product.care}</p>}
-        {activeTab === 'reviews' && (
-          <ul className="space-y-3">
-            {product.reviews.map((r) => (
-              <li key={r.id}>
-                <p className="font-semibold">{r.name}</p>
-                <p className="text-gray-600 text-sm">{r.comment}</p>
-              </li>
-            ))}
-          </ul>
-        )}
+      {/* Tab Content */}
+      <div>
+        {active === "Description" && <p>{product.description}</p>}
+        {active === "Shipping & Policies" && <p>{product.shipping}</p>}
+        {active === "Product Care" && <p>{product.care}</p>}
+        {active === "Reviews" && <ProductReviews reviews={product.reviews} />}
       </div>
     </div>
   );
-};
-
-export default ProductTabs;
+}
