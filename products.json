@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Vanilla Bean Candle",
+    "price": 18.99,
+    "category": "candles",
+    "size": "200ml",
+    "scent": "Vanilla",
+    "image": "https://your-s3-bucket.s3.eu-west-2.amazonaws.com/images/vanilla-bean.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Rose Petal Reed Diffuser",
+    "price": 22.99,
+    "category": "reed-diffusers",
+    "size": "150ml",
+    "scent": "Rose",
+    "image": "https://your-s3-bucket.s3.eu-west-2.amazonaws.com/images/rose-diffuser.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Sandalwood Perfume",
+    "price": 34.99,
+    "category": "perfumes",
+    "size": "100ml",
+    "scent": "Sandalwood",
+    "image": "https://your-s3-bucket.s3.eu-west-2.amazonaws.com/images/sandalwood-perfume.jpg"
+  }
+]
