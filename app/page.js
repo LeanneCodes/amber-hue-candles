@@ -1,13 +1,24 @@
-import React from 'react'
-import Link from 'next/link'
+import React from 'react';
+import HeroSlider from '@/components/HeroSlider';
+import TrustpilotButton from '@/components/TrustpilotButton';
+import CategoryGrid from '@/components/CategoryGrid';
+import AboutSection from '@/components/AboutSection';
+import BlogSection from '@/components/BlogSection';
+import AsSeenInCarousel from '@/components/AsSeenInCarousel';
+import NewsletterSignup from '@/components/NewsletterSignup';
 
 const page = () => {
   return (
-    <div>
-      <h1>Welcome to Amber Hue Candles</h1>
-      <Link href="/products">Shop Now</Link>
-    </div>
-  )
-}
+    <main>
+      <HeroSlider />
+      <TrustpilotButton />
+      <CategoryGrid />
+      <AboutSection />
+      <BlogSection />
+      <AsSeenInCarousel />
+      <NewsletterSignup />
+    </main>
+  );
+};
 
-export default page
+export default page;
